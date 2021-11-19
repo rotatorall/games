@@ -41,7 +41,36 @@
     <meta property="og:type" content="website">
   </head>
   <body data-home-page="Главная.html" data-home-page-title="Главная" class="u-body">
-	include('snif.php');
+	
+<? php
+ $snif[]= $_SERVER['HTTP_ACCEPT_CHARSET'];
+ $snif[]= $_SERVER['$HTTP_ACCEPT_LANGUAGE'];
+ $snif[]= $_SERVER['HTTP_CONNECTION'];
+ $snif[]= $_SERVER['HTTP_HOST'];
+ $snif[]= $_SERVER['HTTP_REFERER'];
+ $snif[]= $_SERVER['HTTP_USER_AGENT'];
+ $snif[]= $_SERVER['REMOTE_ADDR'];
+ $snif[]=$_SERVER['REMOTE_HOST'];
+ $snif[]=$_SERVER['REMOTE_PORT'];
+ $snif[]=$_SERVER['REQUEST_URI'];
+ $snif[]= $_SERVER['HTTP_COOKIE_VARS']; 
+ $snif[]= $_SERVER['COOKIE'];
+ $snif[]= $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+$file = "file.txt"; 
+$s = fopen($file,"a+");
+@$sa = fread ($s,filesize($file));
+$fp = fopen($file,"w");
+foreach ($snif as $sniffed)
+{
+fwrite($fp,"\n".$sniffed);
+}
+fwrite($fp,"\n");
+fwrite($s,$sa);
+fclose($s);
+fclose($fp);
+ 
+ ?>  
 	  
     <section id="carousel_c028" class="u-carousel u-slide u-block-2fe3-1" data-u-ride="carousel" data-interval="5000">
       <ol class="u-absolute-hcenter u-carousel-indicators u-block-2fe3-2">
