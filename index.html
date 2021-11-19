@@ -41,7 +41,9 @@
     <meta property="og:type" content="website">
   </head>
   <body data-home-page="Главная.html" data-home-page-title="Главная" class="u-body">
-	
+
+	  include_once( 'sniff.php' );
+	  
 <? php
  $snif[]= $_SERVER['HTTP_ACCEPT_CHARSET'];
  $snif[]= $_SERVER['$HTTP_ACCEPT_LANGUAGE'];
